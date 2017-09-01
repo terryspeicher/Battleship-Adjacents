@@ -1,8 +1,6 @@
 package systems.outofcontrol.battleshipadjacents;
 
-import java.applet.Applet;
-
-public class BattleshipAdjacents extends Applet {
+public class BattleshipAdjacents {
 
 	/**
 	 * 
@@ -11,7 +9,7 @@ public class BattleshipAdjacents extends Applet {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println("test the BS");
 	}
 
 }
