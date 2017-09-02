@@ -3,7 +3,7 @@ package systems.outofcontrol.battleshipadjacents;
 public class FindAdjacents {
 	
 	private int width;
-	private int sequence;
+	private int sequenceNumOfChosenOne;
 	private Point chosenPoint;
 	private BSCellNode board = null;
 	private BSCellNode edgeAdjacent = null;
@@ -14,16 +14,36 @@ public class FindAdjacents {
 		// TODO Auto-generated constructor stub
 		setWidth(width);
 		setChosenPoint(p);
-		setSequence(this.chosenPoint);
+		setSequenceNumOfChosenOne(this.chosenPoint);
+		sortLists();  // after this runs, the three linked lists will be complete and accessable
 		
 	}
 	
 	private void sortLists() {
 		BSCellNode currentNode = board;
-		int end = this.width * this.width;
+		int end = width * width;
+		
+		boolean currentCellNotInLeftColumn;
+		boolean currentCellNotInRightColumn;
+		
 		for (int currentCell = 0 ; currentCell < end ; currentCell++) {
 			
-			switch (currentCell) {
+			currentCellNotInLeftColumn = (currentCell % width) != 0;
+			currentCellNotInRightColumn = (currentCell % width) != (width - 1);
+			
+			if ((currentCell == (sequenceNumOfChosenOne - width - 1)) && currentCellNotInRightColumn) {	//I am the chosen one's BL
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+			} else if (currentCell == (sequenceNumOfChosenOne - width)) {  //I am the chosen one's BM
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+			} else if ((currentCell == (sequenceNumOfChosenOne - width + 1)) && currentCellNotInLeftColumn) { //I am the chosen one's BR
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+			} else if ((currentCell == (sequenceNumOfChosenOne -1)) && currentCellNotInRightColumn) { //I amd the chosen one's LM
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+
+
+				
+				
+			
 			
 			
 			}
@@ -50,15 +70,15 @@ public class FindAdjacents {
 	/**
 	 * @return the sequence
 	 */
-	public int getSequence() {
-		return sequence;
+	public int getSequenceNumOfChosenOne() {
+		return sequenceNumOfChosenOne;
 	}
 
 	/**
 	 * @param sequence the sequence to set
 	 */
-	public void setSequence(Point p) {
-		this.sequence = p.getY() * getWidth() + p.getY();
+	public void setSequenceNumOfChosenOne(Point p) {
+		this.sequenceNumOfChosenOne = (p.getY() * getWidth()) + p.getY();
 	}
 
 	/**
