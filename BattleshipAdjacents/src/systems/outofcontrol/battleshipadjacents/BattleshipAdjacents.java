@@ -10,13 +10,12 @@ public class BattleshipAdjacents {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		FindAdjacents FA = new FindAdjacents();
+		Point selectedCell = new Point(2,2);
+		FindAdjacents FA = new FindAdjacents(WIDTH,selectedCell);
 		BSCellNode diagAdjacent = null;
 		BSCellNode diagEdge = null;
 		BSCellNode notAdjacent = null;
 		BSCellNode board = null;
-		
-		
 		
 	}
 
