@@ -37,22 +37,35 @@ public class FindAdjacents {
 				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
 			} else if ((currentCell == (sequenceNumOfChosenOne - width + 1)) && currentCellNotInLeftColumn) { //I am the chosen one's BR
 				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
-			} else if ((currentCell == (sequenceNumOfChosenOne -1)) && currentCellNotInRightColumn) { //I amd the chosen one's LM
+			} else if ((currentCell == (sequenceNumOfChosenOne -1)) && currentCellNotInRightColumn) { //I am the chosen one's LM
 				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
-
-
-				
-				
-			
-			
-			
+			} else if ((currentCell == (sequenceNumOfChosenOne + 1)) && currentCellNotInLeftColumn) { //I am the chosen one's RM
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+			} else if ((currentCell == (sequenceNumOfChosenOne + width - 1)) && currentCellNotInRightColumn) { //I am the chosen one's TL
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+			} else if ((currentCell == (sequenceNumOfChosenOne + width)) ) { // I am the chosen one's TM
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+			} else if ((currentCell == (sequenceNumOfChosenOne + width + 1)) && currentCellNotInLeftColumn	)  {//I am the chosen one's TR
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+			} else if (currentCell == sequenceNumOfChosenOne) { //I am Neo, the chosen one. I don't go on any list, so discard me and go on.
+				;
+			} else {    											//I am nobody, I am not adjacent to the chosen one at all
+				nonAdjacent = new BSCellNode(currentCell,nonAdjacent);
 			}
 			
 		}
-		
+			
 	}
 	
-
+	public void printLists() {
+		
+		while (edgeAdjacent != null) {
+			System.out.println("Edges:" + edgeAdjacent.value);
+			
+		}
+	}
+		
+	
 	/**
 	 * @return the width
 	 */
