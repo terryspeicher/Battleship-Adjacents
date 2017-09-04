@@ -1,3 +1,6 @@
+/*
+ * Terry Speicher, CS 3331, HW1
+ */
 package systems.outofcontrol.battleshipadjacents;
 
 
@@ -5,6 +8,7 @@ package systems.outofcontrol.battleshipadjacents;
  
  Terry Speicher, CS 3331
  
+ Model explanation:
  
 Homework assignment #1 was to list edge adjacent cells to a given cell.  Also, list the diagonally adjacent 
 cells.  And finally, list the cells that are not adjacent to the chosen cell.
@@ -50,7 +54,7 @@ Starting at (0,0), we number the cells sequentially, starting at 0. (refer to ch
 So, as an example, if the chosen cell is (2,3), then we can get the sequential number of that cell on the board by using the following
 formula:
 
-sequencialNumberOfCell = (ywidth) + x
+sequencialNumberOfCell = (y * width) + x
 
 or, with a board width of 9:
 
@@ -62,7 +66,7 @@ Given a chosen cell, then we label the adjacent cells as:
 
 
 TL    TM     TR           TL = Top Left, TM = Top Middle, TR = Top Right
-LM   chosen  RM           LM = Left Middle, RM = Right Middle
+LM   chosen  RM           LM = Left Middle,               RM = Right Middle
 BL    BM     BR           BL = Bottom Left, BM = Bottom Middle, BR = Bottom Right
 
 The adjacent cells can be calculated based on the following formulas:
@@ -80,16 +84,23 @@ My solution goes through the board in sequential order and calculates adjacent c
 As cells are identified, they are added to one of 3 linked lists: edgeAdjacent list, diagAdjacent list, or nonAdjacent list.  The
 chosen cell is discarded.
 
+The above evaluation of adjacents works great for general use, but before any left or right adjacent can be committed to 
+its corresponding list, it must be determined that the cell currently being processed is not in the right of left column, 
+respectively.  Top and bottom rows are not an issue.  I leave the proof of this to the reader.
+
 This solution has a Big-O of (n) because there are no nested loops and sorting of cells is done sequentially.  
 
 */
 
  /** 
  * The Class FindAdjacents.
+ * 
+ * This Class is the Model portion that accepts a Point (a class that holds x,y coordinates) and the board width.  Upon 
+ * Instantiation, the board is evaluated and the lists are created.  
  */
 public class FindAdjacents {
 	
-	/** The width. */
+	/** The width of the board. */
 	private int width;
 	
 	/** The sequence number of the chosen one. */
@@ -98,23 +109,20 @@ public class FindAdjacents {
 	/** The chosen point. */
 	private Point chosenPoint;
 	
-	/** The board. */
-	private BSCellNode board = null;
-	
-	/** The edge adjacent. */
+	/** The edge adjacent linked list. */
 	private BSCellNode edgeAdjacent = null;
 	
-	/** The diag adjacent. */
+	/** The diag adjacent linked list. */
 	private BSCellNode diagAdjacent = null;
 	
-	/** The non adjacent. */
+	/** The non adjacent linked list. */
 	private BSCellNode nonAdjacent = null;
 	
 	/**
 	 * Instantiates a new find adjacents.
 	 *
-	 * @param width the width
-	 * @param p the p
+	 * @param width the width of the battleship board
+	 * @param p the point that holds the (x,y) Cartesian coordinates for the chosen cell.
 	 */
 	public FindAdjacents(int width, Point p) {
 		setWidth(width);
@@ -126,6 +134,8 @@ public class FindAdjacents {
 	
 	/**
 	 * Sort lists.
+	 * 
+	 * This is a basic printout of the three lists.  It is used for testing purposes.
 	 */
 	private void sortLists() {
 		
@@ -244,24 +254,6 @@ public class FindAdjacents {
 	 */
 	public void setChosenPoint(Point chosenPoint) {
 		this.chosenPoint = chosenPoint;
-	}
-
-	/**
-	 * Gets the board.
-	 *
-	 * @return the board
-	 */
-	public BSCellNode getBoard() {
-		return board;
-	}
-
-	/**
-	 * Sets the board.
-	 *
-	 * @param board the board to set
-	 */
-	public void setBoard(BSCellNode board) {
-		this.board = board;
 	}
 
 	/**
