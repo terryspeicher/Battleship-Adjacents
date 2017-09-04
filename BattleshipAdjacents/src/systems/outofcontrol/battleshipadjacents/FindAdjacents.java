@@ -84,21 +84,21 @@ public class FindAdjacents {
 	public void printLists() {
 		
 		while (edgeAdjacent != null) {
-			System.out.println("Edges:" + edgeAdjacent.value);
+			System.out.println("Edges:" + edgeAdjacent.getCartesianCoordinates(width).toString());
 			edgeAdjacent = edgeAdjacent.next;
 			
 		}
 		System.out.println("");
 		
 		while (diagAdjacent != null) {
-			System.out.println("Diags:" + diagAdjacent.value);
+			System.out.println("Diags:" + diagAdjacent.getCartesianCoordinates(width).toString());
 			diagAdjacent = diagAdjacent.next;
 			
 		}
 		System.out.println("");
 		
 		while (nonAdjacent != null) {
-			System.out.println("NA:" + nonAdjacent.value);
+			System.out.println("NA:" + nonAdjacent.getCartesianCoordinates(width).toString());
 			nonAdjacent = nonAdjacent.next;
 			
 		}

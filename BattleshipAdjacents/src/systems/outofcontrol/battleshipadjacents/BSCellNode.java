@@ -6,7 +6,6 @@ public class BSCellNode {
 	BSCellNode next;
 	
 	public BSCellNode() {
-		// TODO Auto-generated constructor stub
 		this.value = -1;
 		this.next = null;
 		
@@ -17,5 +16,8 @@ public class BSCellNode {
 		this.next = next;
 	}
 	
+	public Point getCartesianCoordinates(int width) {
+		return new Point(this.value % width, this.value /width);
+	}
 
 }

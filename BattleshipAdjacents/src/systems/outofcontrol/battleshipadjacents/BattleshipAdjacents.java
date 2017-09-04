@@ -10,7 +10,7 @@ public class BattleshipAdjacents {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Point selectedCell = new Point(2,1);
+		Point selectedCell = new Point(0,0);
 		FindAdjacents FA = new FindAdjacents(WIDTH,selectedCell);
 		FA.printLists();
 		

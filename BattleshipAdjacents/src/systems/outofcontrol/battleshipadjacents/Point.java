@@ -13,6 +13,11 @@ public class Point {
 		this.setY(y);
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + this.getX() + "," + this.getY() + ")";
+	}
 
 	/**
 	 * @return the x
