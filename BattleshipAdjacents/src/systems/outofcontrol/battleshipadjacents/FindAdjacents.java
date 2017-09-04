@@ -1,5 +1,20 @@
 package systems.outofcontrol.battleshipadjacents;
 
+//72  73  74  75  76  77  78  79  80
+//63  64  65  66  67  68  69  70  71
+//54  55  56  57  58  59  60  61  62
+//45  46  47  48  49  50  51  52  53
+//36  37  38  39  40  41  42  43  44
+//27  28  29  30  31  32  33  34  35
+//18  19  20  21  22  23  24  25  26
+//09  10  11  12  13  14  15  16  17
+//00  01  02  03  04  05  06  07  08
+
+
+
+
+
+
 public class FindAdjacents {
 	
 	private int width;
@@ -20,7 +35,6 @@ public class FindAdjacents {
 	}
 	
 	private void sortLists() {
-		BSCellNode currentNode = board;
 		int end = width * width;
 		
 		boolean currentCellNotInLeftColumn;
@@ -32,21 +46,21 @@ public class FindAdjacents {
 			currentCellNotInRightColumn = (currentCell % width) != (width - 1);
 			
 			if ((currentCell == (sequenceNumOfChosenOne - width - 1)) && currentCellNotInRightColumn) {	//I am the chosen one's BL
-				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent );
 			} else if (currentCell == (sequenceNumOfChosenOne - width)) {  //I am the chosen one's BM
-				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent);
 			} else if ((currentCell == (sequenceNumOfChosenOne - width + 1)) && currentCellNotInLeftColumn) { //I am the chosen one's BR
-				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent );
 			} else if ((currentCell == (sequenceNumOfChosenOne -1)) && currentCellNotInRightColumn) { //I am the chosen one's LM
-				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent);
 			} else if ((currentCell == (sequenceNumOfChosenOne + 1)) && currentCellNotInLeftColumn) { //I am the chosen one's RM
-				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent);
 			} else if ((currentCell == (sequenceNumOfChosenOne + width - 1)) && currentCellNotInRightColumn) { //I am the chosen one's TL
-				diagAdjacent = new BSCellNode(currentCell, diagAdjacent.next );
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent);
 			} else if ((currentCell == (sequenceNumOfChosenOne + width)) ) { // I am the chosen one's TM
-				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent);
 			} else if ((currentCell == (sequenceNumOfChosenOne + width + 1)) && currentCellNotInLeftColumn	)  {//I am the chosen one's TR
-				edgeAdjacent = new BSCellNode(currentCell, edgeAdjacent.next);
+				diagAdjacent = new BSCellNode(currentCell, diagAdjacent);
 			} else if (currentCell == sequenceNumOfChosenOne) { //I am Neo, the chosen one. I don't go on any list, so discard me and go on.
 				;
 			} else {    											//I am nobody, I am not adjacent to the chosen one at all
@@ -61,6 +75,21 @@ public class FindAdjacents {
 		
 		while (edgeAdjacent != null) {
 			System.out.println("Edges:" + edgeAdjacent.value);
+			edgeAdjacent = edgeAdjacent.next;
+			
+		}
+		System.out.println("");
+		
+		while (diagAdjacent != null) {
+			System.out.println("Diags:" + diagAdjacent.value);
+			diagAdjacent = diagAdjacent.next;
+			
+		}
+		System.out.println("");
+		
+		while (nonAdjacent != null) {
+			System.out.println("NA:" + nonAdjacent.value);
+			nonAdjacent = nonAdjacent.next;
 			
 		}
 	}
@@ -91,7 +120,7 @@ public class FindAdjacents {
 	 * @param sequence the sequence to set
 	 */
 	public void setSequenceNumOfChosenOne(Point p) {
-		this.sequenceNumOfChosenOne = (p.getY() * getWidth()) + p.getY();
+		this.sequenceNumOfChosenOne = (p.getY() * getWidth()) + p.getX();
 	}
 
 	/**
