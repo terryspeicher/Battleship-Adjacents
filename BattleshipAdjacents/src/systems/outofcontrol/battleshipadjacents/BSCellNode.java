@@ -43,8 +43,8 @@ public class BSCellNode {
 	 * @param width the width of the battleship board
 	 * @return the Cartesian coordinates
 	 */
-	public Point getCartesianCoordinates(int width) {
-		return new Point(this.value % width, this.value /width);
+	public MyPoint getCartesianCoordinates(int width) {
+		return new MyPoint(this.value % width, this.value /width);
 	}
 
 }

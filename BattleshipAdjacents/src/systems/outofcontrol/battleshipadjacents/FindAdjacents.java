@@ -4,6 +4,7 @@
 package systems.outofcontrol.battleshipadjacents;
 
 
+// TODO: Auto-generated Javadoc
 /*
  
  Terry Speicher, CS 3331
@@ -95,7 +96,7 @@ This solution has a Big-O of (n) because there are no nested loops and sorting o
  /** 
  * The Class FindAdjacents.
  * 
- * This Class is the Model portion that accepts a Point (a class that holds x,y coordinates) and the board width.  Upon 
+ * This Class is the Model portion that accepts a MyPoint (a class that holds x,y coordinates) and the board width.  Upon 
  * Instantiation, the board is evaluated and the lists are created.  
  */
 public class FindAdjacents {
@@ -107,7 +108,7 @@ public class FindAdjacents {
 	private int sequenceNumOfChosenOne;
 	
 	/** The chosen point. */
-	private Point chosenPoint;
+	private MyPoint chosenPoint;
 	
 	/** The edge adjacent linked list. */
 	private BSCellNode edgeAdjacent = null;
@@ -124,7 +125,7 @@ public class FindAdjacents {
 	 * @param width the width of the battleship board
 	 * @param p the point that holds the (x,y) Cartesian coordinates for the chosen cell.
 	 */
-	public FindAdjacents(int width, Point p) {
+	public FindAdjacents(int width, MyPoint p) {
 		setWidth(width);
 		setChosenPoint(p);
 		setSequenceNumOfChosenOne(this.chosenPoint);
@@ -135,9 +136,11 @@ public class FindAdjacents {
 	/**
 	 * Sort lists.
 	 * 
-	 * This is a basic printout of the three lists.  It is used for testing purposes.
+	 * This is the workhorse of the class.  It populates the three "adjacent" linked lists with the cells that belong in each list.
 	 */
 	private void sortLists() {
+		
+		//Logic done with 10 if statements and 2 add'l math calculations
 		
 		int end = width * width;
 		
@@ -176,7 +179,36 @@ public class FindAdjacents {
 	}
 	
 	/**
-	 * Prints the lists.
+	 * Prints the lists in columns.
+	 */
+	public void printListsInColumns() {
+		BSCellNode eA = edgeAdjacent;
+		BSCellNode dA = diagAdjacent;
+		BSCellNode nA = nonAdjacent;
+		
+		//header
+		System.out.printf("%s\t%s\t%s\n", "Edge Adjacent","Diagonally Adjacent","Non Adjacent");
+		//body
+		while ( (eA != null) || 
+				(dA != null) ||
+				(nA != null) ) {
+			
+			System.out.printf("\t%s\t\t%s\t\t%s\n", (eA != null ? eA.getCartesianCoordinates(width).toString() : " "), 
+					(dA != null ? dA.getCartesianCoordinates(width).toString() : " "), 
+					(nA != null ? nA.getCartesianCoordinates(width).toString(): " "));
+			
+			if (eA != null) eA = eA.next;
+			if (dA != null) dA = dA.next;
+			if (nA != null) nA = nA.next;
+			
+		}
+		//footer
+		System.out.println("----------------------------------------------------\nEnd.\n");
+	}
+	
+	/**
+	 * Prints the lists.  THIS IS ONLY USED FOR TESTING!!! IT WILL DESTROY THE 3 LINKED LISTS AND WILL 
+	 * GIVE INCORRECT RESULTS IF RUN MORE THAN ONCE.  
 	 */
 	public void printLists() {
 		
@@ -234,7 +266,7 @@ public class FindAdjacents {
 	 *
 	 * @param p the new sequence num of chosen one
 	 */
-	public void setSequenceNumOfChosenOne(Point p) {
+	public void setSequenceNumOfChosenOne(MyPoint p) {
 		this.sequenceNumOfChosenOne = (p.getY() * getWidth()) + p.getX();
 	}
 
@@ -243,7 +275,7 @@ public class FindAdjacents {
 	 *
 	 * @return the chosenPoint
 	 */
-	public Point getChosenPoint() {
+	public MyPoint getChosenPoint() {
 		return chosenPoint;
 	}
 
@@ -252,7 +284,7 @@ public class FindAdjacents {
 	 *
 	 * @param chosenPoint the chosenPoint to set
 	 */
-	public void setChosenPoint(Point chosenPoint) {
+	public void setChosenPoint(MyPoint chosenPoint) {
 		this.chosenPoint = chosenPoint;
 	}
 

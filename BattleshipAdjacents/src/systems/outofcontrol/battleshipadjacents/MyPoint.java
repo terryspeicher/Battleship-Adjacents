@@ -4,9 +4,9 @@
 package systems.outofcontrol.battleshipadjacents;
 
 /**
- * The Class Point.
+ * The Class MyPoint.
  */
-public class Point {
+public class MyPoint {
 
 	/** The x coordinate. */
 	private int x;
@@ -22,7 +22,7 @@ public class Point {
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 */
-	public Point(int x, int y) {
+	public MyPoint(int x, int y) {
 		// TODO Auto-generated constructor stub
 		this.setX(x); 
 		this.setY(y);
