@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>systems.outofcontrol.battleshipadjacents</OriginalElement>
+  <nodes>
+    <node x="15.504999999999995" y="123.0">systems.outofcontrol.battleshipadjacents.BSCellNode</node>
+    <node x="0.0" y="246.0">systems.outofcontrol.battleshipadjacents.FindAdjacents</node>
+    <node x="128.39750000000004" y="457.0">systems.outofcontrol.battleshipadjacents.BattleshipAdjacents</node>
+    <node x="167.60000000000002" y="0.0">systems.outofcontrol.battleshipadjacents.MyPoint</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="systems.outofcontrol.battleshipadjacents.BSCellNode" target="systems.outofcontrol.battleshipadjacents.MyPoint">
+      <point x="42.75" y="-36.5" />
+      <point x="143.755" y="103.0" />
+      <point x="192.10000000000002" y="103.0" />
+      <point x="-24.5" y="36.5" />
+    </edge>
+    <edge source="systems.outofcontrol.battleshipadjacents.FindAdjacents" target="systems.outofcontrol.battleshipadjacents.BSCellNode">
+      <point x="-56.19999999999999" y="-80.5" />
+      <point x="84.30000000000001" y="221.0" />
+      <point x="101.005" y="221.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="systems.outofcontrol.battleshipadjacents.BattleshipAdjacents" target="systems.outofcontrol.battleshipadjacents.MyPoint">
+      <point x="75.0" y="-36.5" />
+      <point x="302.5" y="93.0" />
+      <point x="257.43333333333334" y="93.0" />
+      <point x="40.833333333333314" y="36.5" />
+    </edge>
+    <edge source="systems.outofcontrol.battleshipadjacents.BattleshipAdjacents" target="systems.outofcontrol.battleshipadjacents.FindAdjacents">
+      <point x="-75.0" y="-36.5" />
+      <point x="153.39750000000004" y="432.0" />
+      <point x="70.25" y="432.0" />
+      <point x="-70.25" y="80.5" />
+    </edge>
+    <edge source="systems.outofcontrol.battleshipadjacents.FindAdjacents" target="systems.outofcontrol.battleshipadjacents.MyPoint">
+      <point x="56.19999999999999" y="-80.5" />
+      <point x="196.7" y="221.0" />
+      <point x="211.63916666666668" y="221.0" />
+      <point x="211.63916666666668" y="103.0" />
+      <point x="208.43333333333334" y="103.0" />
+      <point x="-8.166666666666686" y="36.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="164.5" y="221.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
