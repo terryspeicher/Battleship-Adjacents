@@ -30,7 +30,7 @@ public class BattleshipAdjacents {
 	    MyPoint chosen;
 	    
 	    do {
-		System.out.print("Please enter coordinates (0,0) through (8,8)*ª: ");
+		System.out.print("Please enter coordinates (0,0) through (8,8):&");
 	    String shot = input.nextLine();
 	    chosen = parseCoordinates(shot);
      	System.out.println( chosen != null ? "Examining coordinates : " + chosen.toString() : "Unable to parse coordinates entered." );
